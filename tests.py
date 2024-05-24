@@ -30,12 +30,20 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(add("//k1k2\n3\n4"), 10)
 
     def test_negative_numbers_input(self):
-        with self.assertRaises(Exception) as exception:
+        try:
             add("-1\n2,-3")
-            self.assertEqual(exception.exception.message, 'negative numbers not allowed -1,negative numbers not allowed -3')
-        with self.assertRaises(Exception) as exception:
-            add("-1\n2,-3")
-            self.assertEqual(exception.exception.message, 'negative numbers not allowed -2')
+            self.fail("Should have generated ValueError")
+        except ValueError as exception:
+            self.assertEqual(str(exception), 'negative numbers not allowed -1,negative numbers not allowed -3')
+        try:
+            add("1\n-2,3")
+            self.fail("Should have generated ValueError")
+        except ValueError as exception:
+            self.assertEqual(str(exception), 'negative numbers not allowed -2')
+        try:
+            add("1\n2,3")
+        except ValueError as exception:
+            self.fail("Generated ValueError Unexpectedly !")
 
 if __name__ == '__main__':
     unittest.main()
