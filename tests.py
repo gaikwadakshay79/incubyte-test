@@ -6,11 +6,15 @@ class TestStringMethods(unittest.TestCase):
     def test_checking_empty_string(self):
         self.assertEqual(add(""), 0)
 
-    def test_checking_single_variable_input(self):
+    def test_checking_single_number_string_input(self):
         self.assertEqual(add("1"), 1)
 
-    def test_checking_multiple(self):
+    def test_checking_two_numbers_string_input(self):
         self.assertEqual(add("1,5"), 6)
+
+    def test_checking_multiple_numbers_string_input(self):
+        self.assertEqual(add("1,2,3"), 6)
+        self.assertEqual(add("1,2,3,5"), 11)
 
 if __name__ == '__main__':
     unittest.main()
