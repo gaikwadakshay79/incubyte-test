@@ -29,5 +29,13 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(add("//k1\n2\n3"), 6)
         self.assertEqual(add("//k1k2\n3\n4"), 10)
 
+    def test_negative_numbers_input(self):
+        with self.assertRaises(Exception) as exception:
+            add("-1\n2,-3")
+            self.assertEqual(exception.exception.message, 'negative numbers not allowed -1,negative numbers not allowed -3')
+        with self.assertRaises(Exception) as exception:
+            add("-1\n2,-3")
+            self.assertEqual(exception.exception.message, 'negative numbers not allowed -2')
+
 if __name__ == '__main__':
     unittest.main()
