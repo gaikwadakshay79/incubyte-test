@@ -22,5 +22,12 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(add("1\n2\n3"), 6)
         self.assertEqual(add("1,2\n3\n4"), 10)
 
+    def test_dynamic_delimiter_given_in_numbers_string_input(self):
+        #  "//[delimiter]\n[numbers…]"
+        self.assertEqual(add("//;1\n2;3"), 6)
+        self.assertEqual(add("//k1k2\n3"), 6)
+        self.assertEqual(add("//k1\n2\n3"), 6)
+        self.assertEqual(add("//k1k2\n3\n4"), 10)
+
 if __name__ == '__main__':
     unittest.main()
