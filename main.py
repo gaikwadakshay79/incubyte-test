@@ -21,6 +21,16 @@ def validate_input_numbers(numbers_list):
             exception_message_list.append("negative numbers not allowed {}".format(nnumber))
         if exception_message_list:
             raise ValueError(",".join(exception_message_list))
+        
+def get_result(delimiter, numbers_list):
+    if delimiter == "*":
+        multiplication = 1
+        for number in numbers_list:
+            multiplication *= number
+            if multiplication == 0:
+                return 0
+        return multiplication
+    return sum(numbers_list)
 
 def add(string_numbers):
     if string_numbers == "":
@@ -30,5 +40,5 @@ def add(string_numbers):
     numbers_list = get_numbers_list(string_numbers, delimiter)
     validate_input_numbers(numbers_list)
 
-    numbers_sum = sum(numbers_list)
-    return numbers_sum
+    numbers_result = get_result(delimiter, numbers_list)
+    return numbers_result
