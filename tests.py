@@ -24,10 +24,10 @@ class TestStringMethods(unittest.TestCase):
 
     def test_dynamic_delimiter_given_in_numbers_string_input(self):
         #  "//[delimiter]\n[numbers…]"
-        self.assertEqual(add("//;1\n2;3"), 6)
-        self.assertEqual(add("//k1k2\n3"), 6)
-        self.assertEqual(add("//k1\n2\n3"), 6)
-        self.assertEqual(add("//k1k2\n3\n4"), 10)
+        self.assertEqual(add("//;\n1\n2;3"), 6)
+        self.assertEqual(add("//k\n1k2\n3"), 6)
+        self.assertEqual(add("//k\n1\n2\n3"), 6)
+        self.assertEqual(add("//k\n1k2\n3\n4"), 10)
 
     def test_negative_numbers_input(self):
         try:
@@ -46,9 +46,9 @@ class TestStringMethods(unittest.TestCase):
             self.fail("Generated ValueError Unexpectedly !")
 
     def test_multiplication_when_custom_delimiter_is_star(self):
-        self.assertEqual(add("//*1*2*3"), 6)
-        self.assertEqual(add("//*1*2*3*4"), 24)
-        self.assertEqual(add("//*1*2\n3*0"), 0)
+        self.assertEqual(add("//*\n1*2*3"), 6)
+        self.assertEqual(add("//*\n1*2*3*4"), 24)
+        self.assertEqual(add("//*\n1*2\n3*0"), 0)
 
 if __name__ == '__main__':
     unittest.main()
