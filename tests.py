@@ -45,5 +45,10 @@ class TestStringMethods(unittest.TestCase):
         except ValueError as exception:
             self.fail("Generated ValueError Unexpectedly !")
 
+    def test_multiplication_when_custom_delimiter_is_star(self):
+        self.assertEqual(add("//*\n1*2*3"), 6)
+        self.assertEqual(add("//*\n1*2*3*4"), 24)
+        self.assertEqual(add("//*\n1*2\n3*0"), 0)
+
 if __name__ == '__main__':
     unittest.main()
